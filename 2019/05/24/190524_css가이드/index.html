@@ -1,21 +1,278 @@
-extends partial/layout
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 
-block site_title
-    != page.title + " · " + config.title
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name="description", content=desc)
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
-block container
-    include mixins/post
-    +post(page)
 
-block pagination
-    include mixins/paginator
-    +post()
-    include partial/comment
 
-block copyright
-    include partial/copyright
+  <meta name="description" content="CSS 가이드">
 
+
+
+
+  <meta name="keywords" content="html,css,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="서울숲중절모의 BLOG">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://yoursite.com/2019/05/24/190524_css가이드/">
+
+
+<meta name="description" content="CSS 가이드CSS 처음 배웠을 때는 그냥 생각나는 데로 막 적었던 것 같다.width, height 만 맨 앞에 위치시키고 뒤죽박죽이였습니다.어디선 position이 앞에 위치해 있고, 또 어디선 맨 뒤에 위치해 있었습니다.처음 포트폴리오를 만들때 나중에 수정하려고 보면 보기가 힘들었습니다.그래서 CSS 가이드라인이 필요하다고 생각하였습니다. daum,">
+<meta name="keywords" content="html,css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 가이드">
+<meta property="og:url" content="https://yoursite.com/2019/05/24/190524_css가이드/index.html">
+<meta property="og:site_name" content="서울숲중절모의 BLOG">
+<meta property="og:description" content="CSS 가이드CSS 처음 배웠을 때는 그냥 생각나는 데로 막 적었던 것 같다.width, height 만 맨 앞에 위치시키고 뒤죽박죽이였습니다.어디선 position이 앞에 위치해 있고, 또 어디선 맨 뒤에 위치해 있었습니다.처음 포트폴리오를 만들때 나중에 수정하려고 보면 보기가 힘들었습니다.그래서 CSS 가이드라인이 필요하다고 생각하였습니다. daum,">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-27T01:18:39.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS 가이드">
+<meta name="twitter:description" content="CSS 가이드CSS 처음 배웠을 때는 그냥 생각나는 데로 막 적었던 것 같다.width, height 만 맨 앞에 위치시키고 뒤죽박죽이였습니다.어디선 position이 앞에 위치해 있고, 또 어디선 맨 뒤에 위치해 있었습니다.처음 포트폴리오를 만들때 나중에 수정하려고 보면 보기가 힘들었습니다.그래서 CSS 가이드라인이 필요하다고 생각하였습니다. daum,">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> CSS 가이드 - 서울숲중절모의 BLOG </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">서울숲중절모의 BLOG</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          CSS 가이드
+        
+      </h1>
+
+      <time class="post-time">
+          May 24 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="CSS-가이드"><a href="#CSS-가이드" class="headerlink" title="CSS 가이드"></a>CSS 가이드</h1><p>CSS 처음 배웠을 때는 그냥 생각나는 데로 막 적었던 것 같다.<br>width, height 만 맨 앞에 위치시키고 뒤죽박죽이였습니다.<br>어디선 position이 앞에 위치해 있고, 또 어디선 맨 뒤에 위치해 있었습니다.<br>처음 포트폴리오를 만들때 나중에 수정하려고 보면 보기가 힘들었습니다.<br>그래서 CSS 가이드라인이 필요하다고 생각하였습니다.</p>
+<p>daum, naver, mozila 등에서 가이드를 만들었고 저도 그것들을 많이 참고를 했고,<br>제 나름대로의 속성 순서를 공유 해드릴려고 합니다.</p>
+<h2 id="CSS-속성-순서"><a href="#CSS-속성-순서" class="headerlink" title="CSS 속성 순서"></a>CSS 속성 순서</h2><p><strong>속성정의 -&gt; 모양윤곽 -&gt; 윤곽 디테일 -&gt; 색상 순으로 작성을 한다.</strong></p>
+<ol>
+<li>display. 블록, 인라인 속성을 정리해준다.(속성)</li>
+<li>box-border</li>
+<li>overflow (넘침)</li>
+<li>float (흐름)</li>
+<li>clear</li>
+</ol>
+<hr>
+<ol start="6">
+<li>position (위치)</li>
+<li>left, top, right, bottom 순으로.</li>
+<li>width</li>
+<li>height</li>
+<li>line-heigt<br><em>(line-height는 글자속성인데 height 값이랑 똑같이 쓸때가 많아서 height 바로 뒤로 사용)</em></li>
+<li>margin</li>
+<li>padding<br><em>(<em>원래는 padding을 먼저 썼는데, 초기값을 margin: 0; padding: 0;으로 일반적으로 사용해서 margin 먼저 사용.</em>)</em></li>
+<li>border (border-radius, border-color 등)</li>
+</ol>
+<hr>
+<ol start="14">
+<li>background-color (색상)</li>
+</ol>
+<hr>
+<ol start="15">
+<li>font-size</li>
+<li>font-weight</li>
+<li>text-align</li>
+<li>color</li>
+</ol>
+<hr>
+<ol start="19">
+<li>transform</li>
+<li>transition</li>
+<li>opacity 등등…</li>
+<li>z-index (맨뒤에)</li>
+</ol>
+<h2 id="폰트-속성-순서"><a href="#폰트-속성-순서" class="headerlink" title="폰트 속성 순서"></a>폰트 속성 순서</h2><p><strong>축약형은 지양 다음 순으로 작성한다.</strong></p>
+<ol>
+<li>font-family</li>
+<li>font-size</li>
+<li>font-weight</li>
+<li>font-style</li>
+</ol>
+<h2 id="background-position-속성값"><a href="#background-position-속성값" class="headerlink" title="background-position 속성값"></a>background-position 속성값</h2><p><strong>숫자로 선언한다.</strong></p>
+<ul>
+<li>{background-position: left top} (x)</li>
+<li>{background-position: 0 0} (o)</li>
+<li>{background-position: 100% 50%} (o)</li>
+</ul>
+<h2 id="컬러값"><a href="#컬러값" class="headerlink" title="컬러값"></a>컬러값</h2><p><strong>CSS 최적화를 위해 축양형으로 사용한다.</strong></p>
+<ul>
+<li>{color: #777777} (x)</li>
+<li>{color: #777} (o)</li>
+</ul>
+<h2 id="z-index값-적용-가이드"><a href="#z-index값-적용-가이드" class="headerlink" title="z-index값 적용 가이드"></a>z-index값 적용 가이드</h2><ul>
+<li>z-index 수치 간격은 10단위로 적용.</li>
+<li>기본값을 10으로 지정, 해당 프로젝트마다 z-index를 재정의 해서 사용</li>
+<li>페이지 단위에서 1000을 넘는 경우를 발생하지 않음</li>
+<li>팝업은 1000부터 시작</li>
+</ul>
+<h1 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h1><p>속성 순서에 대해서는 정답이 없다고 생각합니다.<br>속성이 계속 계속 나오고 있고 사람마다 다 다르기 때문이죠.<br><strong>흰 고양이든 검은 고양이든 쥐만 잘 잡으면 생각합니다.</strong></p>
+<p>그리고 속성 순서 정의에 대해서 스트레스받을 필요도 없다고 생각합니다.<br>전체적인 규칙에 공감한다면 눈에 쉽게 들어올 것입니다.</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/html/">html</a>
+		  
+			<a href="/tags/css/">css</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2019/05/21/190521_flex/">
+        <span class="next-text nav-default">flexbox, 그리고 레이아웃에 대해</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">Hyeon Seok.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
