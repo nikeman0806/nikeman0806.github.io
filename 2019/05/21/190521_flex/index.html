@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    <title>서울숲중절모의 BLOG | flexbox, 그리고 레이아웃에 대해 </title>
+    <meta name="description" content>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,600,700" rel="stylesheet">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/style/doc.css">
+
+    <!-- favicon -->
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+  </head>
+  <body>
+
+   <script>window.__INITIAL_STATE__ = {"page":{"title":"flexbox, 그리고 레이아웃에 대해","path":"2019/05/21/190521_flex/"},"data":{},"config":{"timezone":null,"root":"/","time_format":"HH:mm:ss","theme":"doc","theme_config":{"swagger_ui":{"version":2,"permalinks":true,"api_explorer":true,"download":"Download specification","show_extensions":false,"deep_linking":true,"display_operation_id":false,"doc_expansion":"none"},"search":{"skip":false,"background":false,"route":"/lunr.json"},"favicon":"/favicon.ico"}}}</script>
+
+    <div id="react-navigation-root"><div class="doc-navigation" data-reactroot><nav class="doc-navbar"><i class="dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close doc-navbar__sidebar-close doc-navbar__sidebar-close--desktop"></i><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-navbar__sidebar-toggle"></i></nav><nav class="doc-sidebar"><div class="doc-sidebar__vertical-menu"><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-sidebar-toggle--primary doc-sidebar__vertical-menu__item"></i><i class="dc-icon dc-icon--search dc-icon--interactive doc-sidebar__vertical-menu__item doc-sidebar__vertical-menu__item--primary"></i></div><div class="doc-sidebar-content"><div class="doc-sidebar__search-form"></div><ul class="doc-sidebar-list"></ul></div></nav></div></div>
+    <div class="doc-content">
+  <div class="dc-page">
+    <div class="dc-card">
+      <div id="react-search-results-root"></div>
+      <div id="page-content" class="doc-formatting">
+        <p>html은 기본적으로 위에서 아래로 가로로 출력이 됩니다.<br>그래서 예전부터 레이아웃을 잡기위한 노력들이 있었습니다.</p>
+<p>여러가지 방법들이 있지만 저는 float를 제일 선호합니다.<br>이유는 ‘크로스 브라우징’ 때문입니다.<br>저의 모토는 모든 사람들이 이용 가능 한 웹을 만드는 것이기 때문입니다.</p>
+<p>제가 flex에 대해서 글을 작성하는 이유는 회사에 처음 왔을때 기존 계신 프론트 개발자분과 논쟁이 있었습니다.<br>저는 float를 사용해야한다는 입장이였고, 프론트앤드 개발자분은 float가 너무 어렵고 크로스 브라우징을 지금 단계에서는 낮게 까지 안맞춰도 되어서 flex를 사용하자는 주장이였습니다.</p>
+<p>그때 flex에 대해서 공부를 하였고,<br>지금은 프로젝트의 방향성에 따라서 둘 다 사용하고 있습니다.</p>
+<p>그래서 그때 공부하고 정리한 내용을 공유하려고합니다.</p>
+<h2 id="레이아웃의-역사"><a href="#레이아웃의-역사" class="headerlink" title="레이아웃의 역사"></a>레이아웃의 역사</h2><p>레이아웃의 역사는 ‘table tag’로 시작했다고 볼수 있습니다.<br>과거 퍼블리셔라는 직군이 없거나 애매모호 할 시절에는 디자이너 or 웹 개발자들이 화면단을 만들었습니다.<br>드림위버, 나모 웹 에디터로 화면을 직접 보면서 제작할 수 있어서 HTML, CSS를 모르더라도 만들 수 있었고, 이런 에디터들은 레이아웃을 table tag로 잡아 주었습니다.<br>더 쉽게는 디자인이 된 것을 이미지로 잘라서 table에 넣기만 하면 완성이 되었습니다.<br>하지만 <strong>웹 표준을 위배하고 웹 접근성에 치명적인 약점이 있어</strong> float의 시대로 그리고 flex, gird이 개발되고 사용되게 됩니다.</p>
+<ol>
+<li><a href="#1-table-tag">table tag</a></li>
+<li><a href="#2-position">position</a></li>
+<li><a href="#3-float">float</a></li>
+<li><a href="#4-flex">flex</a></li>
+<li><a href="#5-grid">grid</a><br><br></li>
+</ol>
+<hr>
+<p><br></p>
+<h3 id="1-table-tag"><a href="#1-table-tag" class="headerlink" title="1. table tag"></a>1. table tag</h3><ul>
+<li><p>장점</p>
+<ul>
+<li>태그의 의미에 따라 사용(표, form)하면 좋음</li>
+</ul>
+</li>
+<li><p>단점</p>
+<ul>
+<li>table 코드로 레이아웃을 만들고 안에 이미지, 내용을 넣어서 웹을 만듬. table 요소를 도표의 의미가 아닌 용도에 쓰는 것.</li>
+<li>그리고 table 레이아웃으로 인해 HTML 문서안에 외형을 담고 있는 것은 웹 표준 위배.</li>
+<li>table 요소는 기본적으로 접근성이 떨어짐. 또한 내용이 비 순차적으로 담기면서 접근성이 떨어질 뿐 아니라, 의미적 구조도 깨짐.</li>
+<li>소스가 불필요하게 길어질 수 있고, 추후 소스 수정 등의 유지보수에 어려움.</li>
+<li>테이블의 레이아웃은 브라우저마다 미묘하게 다를 수 있기 때문에, 크로스 브라우징이 어려움.</li>
+<li>여러 해상도를 지원하는 반응형 웹, 가변적 레이아웃을 적용하기는 사실 상 불가능.</li>
+<li>table 태그는 하나의 객체. table 태그 내에 있는 모든 셀이 로드 되어야 화면에 나타남. 그래서 페이지 속도가 느림.</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-position"><a href="#2-position" class="headerlink" title="2. position"></a>2. position</h3><ul>
+<li><p>장점</p>
+<ul>
+<li>기준(position:relative)으로 부터 자신의 원하는 위치에 정확하게 위치시킬 수 있음.</li>
+<li>사용하기 쉬움.</li>
+</ul>
+</li>
+<li><p>단점</p>
+<ul>
+<li>반응형 웹을 사용할 때에는 날아다 닐 수 있음.</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-float"><a href="#3-float" class="headerlink" title="3. float"></a>3. float</h3><ul>
+<li><p>장점</p>
+<ul>
+<li>확실하게 레이아웃을 컨트롤 할 수 있는 방법.</li>
+<li>가로로 출력되는 html을 세로로 정렬 용이.</li>
+<li><strong>크로스 브라우징</strong>에 용이</li>
+</ul>
+</li>
+<li><p>단점</p>
+<ul>
+<li><strong>어려움</strong>.</li>
+<li>width 값이 딱 떨어지지 않으면 계산하기 힘듬. (해결 방법은 있지만 다음 기회에)</li>
+<li>padding, margin, border 값 요소의 넓이, 높이값에 영향을 미치는 값이 있으면 더 계산힘듬.</li>
+<li>서로 다른 높이값을 갖는 요소가 있으면 세로정렬에 어려움.</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-flex"><a href="#4-flex" class="headerlink" title="4.flex"></a>4.flex</h3><ul>
+<li><p>장점</p>
+<ul>
+<li>‘유연’</li>
+<li>공간에 따라서 가로 또는 세로의 길이를 조절 할 수 있으며 공간에 대한 비율기반으로 크기를 알아서 조절해준다.</li>
+<li>margin, padding, border 값 요소의 넓이, 높이값에 영향을 미쳐도 알아서 값을 계산해서 조절해줌.</li>
+<li>마크업 된 순서와 상관없이 원하는 방향, 순서에 따라 flex 항목들을 나타나게 할 수 있어 접급성에 제약을 받지 않는다.</li>
+<li>서로 다른 높이값을 갖는 요소가 있어도 세로정렬이 용이.</li>
+</ul>
+</li>
+<li><p>단점</p>
+<ul>
+<li>ie11 이상 부터 사용가능.</li>
+<li>버전이 다른 브라우저에서 사용하려면 벤더프릭피스를 사용해야한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-grid"><a href="#5-grid" class="headerlink" title="5.grid"></a>5.grid</h3><ul>
+<li><p>장점</p>
+<ul>
+<li>레이아웃 정리하기 쉬움.</li>
+</ul>
+</li>
+<li><p>단점</p>
+<ul>
+<li>flex 보다 더 최근에 나옴. 호환되는 브라우저 버전이 높음.</li>
+<li>미국에선 사용가능.</li>
+</ul>
+</li>
+</ul>
+<h2 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h2><p>저도 float만 고집해왔는데 위에 말했듯이 논쟁이 뒤 flex를 공부하고 사용해봤는데 정말 좋습니다.<br>진짜 정말 좋습니다.<br>크로스 브라우징이 상관없는 프로젝트에서는 무조건 flex를 사용하고 있습니다.</p>
+<p>레이아웃을 구성할 수 있는 코드는 위에 적어놨듯이 많습니다.<br>프로젝트에 맞게 주변 상황에 맞게 사용하면 된다고 생각합니다.</p>
+<p>자신이 할 줄 아는 것에만 고집하지 말고 유연한(flexible) 사고와 자세를 가진 사람이 되는게 더 중요한 것 같습니다.</p>
+
+        <div id="react-support-footer-root"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+
+    
+
+    <!-- js vendors -->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.0/lunr.min.js"></script>
+
+    <!-- js source  -->
+    <script src="/script/doc.js"></script>
+
+    
+
+  </body>
+</html>
